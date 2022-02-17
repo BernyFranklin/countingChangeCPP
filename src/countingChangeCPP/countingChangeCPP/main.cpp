@@ -3,7 +3,7 @@
 // CIS054 C/C++ Programming
 // Inputs: quarters, dimes, nickels, pennies
 // Outputs: total
-// V1.0
+// V1.0 10Feb2022
 
 #include <iostream>   // used for cin and cout
 #include <iomanip>    // used to set 2 digits past the decimal
@@ -15,6 +15,7 @@ const double DIME_VALUE = 0.10;      // dimes are worth    $0.10
 const double NICKEL_VALUE = 0.05;    // nickels are worth  $0.05
 const double PENNY_VALUE = 0.01;     // pennies are worth  $0.01
 
+//start main program
 int main(int argc, const char * argv[])
 {
     // declare variables, initialized at -1 for loop
@@ -24,8 +25,11 @@ int main(int argc, const char * argv[])
     int pennies = -1;
     double total;
     
-    // INPUT
+    // Welcome Prompt
     cout << "Welcome to Frank's Loose Change Calculator" << endl << endl;
+    
+    //INPUT: prompt user to assign values to coin variables
+    
     // quarter loop
     while (quarters < 0)
     {
@@ -33,17 +37,18 @@ int main(int argc, const char * argv[])
         cout << "How many quarters do you have? " << endl;
         cin >> quarters;
         cout << endl;
+        
+        // eliminate negative number input
+        if (quarters < 0)
+        {
+            cout << "Negative numbers are unauthorized" << endl << endl;
+        }
         // eliminate letter input
         if (cin.fail() )
         {
             cout << "Letters are unauthorized" << endl;
             cout << "Please restart the program" << endl << endl;
             return 1;   // end program and returns error code 1
-        }
-        // eliminate negative number input
-        if (quarters < 0)
-        {
-            cout << "Negative numbers are unauthorized" << endl << endl;
         }
     }   // end of quarter loop
    
@@ -120,5 +125,5 @@ int main(int argc, const char * argv[])
     cout << setiosflags(ios::fixed | ios::showpoint);  // Sets 2 decimal places regardless if 0's
     cout << "You have $" << setprecision(2) << total << " in loose change!" << endl << endl;
 
-    return 0;
+    return 0;  // end program and return error code 0
 } // end of int main
